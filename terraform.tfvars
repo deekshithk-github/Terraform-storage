@@ -1,4 +1,4 @@
-resource_group_name     = "Firstresource"
+resource_group_name     = "myresource"
 resource_group_location = "West Europe"
 app_service_plan_name   = "FirstAppserviceplan"
 app_service_name        = "temenosappservice"
