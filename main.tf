@@ -4,8 +4,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg1" {
-  name     = "Firstresource"
-  location = "West Europe"
+  name     = "var.resource_group_name"
+  location = "var.resource_location"
 
   tags = {
     environment = "production"
@@ -13,7 +13,7 @@ resource "azurerm_resource_group" "rg1" {
 }
 
 resource "azurerm_app_service_plan" "app_plan" {
-  name                = "FirstAppserviceplan"
+  name                = "var.app_service_plan_name"
   location            = azurerm_resource_group.rg1.location
   resource_group_name = azurerm_resource_group.rg1.name
 
@@ -24,7 +24,7 @@ resource "azurerm_app_service_plan" "app_plan" {
 }
 
 resource "azurerm_app_service" "webapp" {
-  name                = "temenosappservice"
+  name                = "var.app_service_name"
   location            = azurerm_resource_group.rg1.location
   resource_group_name = azurerm_resource_group.rg1.name
   app_service_plan_id = azurerm_app_service_plan.app_plan.id
@@ -46,7 +46,7 @@ resource "azurerm_app_service" "webapp" {
 }
 
 resource "azurerm_sql_server" "sqlserver" {
-  name                         = "temenossqlserver"
+  name                         = "var.sql_service_name"
   resource_group_name          = azurerm_resource_group.rg1.name
   location                     = azurerm_resource_group.rg1.location
   version                      = "12.0"
@@ -55,7 +55,7 @@ resource "azurerm_sql_server" "sqlserver" {
 }
 
 resource "azurerm_sql_database" "db" {
-  name                = "Firstsqldb"
+  name                = "var.sql_database_name"
   resource_group_name = azurerm_resource_group.rg1.name
   location            = azurerm_resource_group.rg1.location
   server_name         = azurerm_sql_server.sqlserver.name
