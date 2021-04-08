@@ -46,7 +46,7 @@ resource "azurerm_app_service" "webapp" {
 }
 
 resource "azurerm_sql_server" "sqlserver" {
-  name                         = "var.sql_service_name"
+  name                         = "var.sql_server_name"
   resource_group_name          = azurerm_resource_group.rg1.name
   location                     = azurerm_resource_group.rg1.location
   version                      = "12.0"
